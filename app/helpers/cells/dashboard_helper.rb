@@ -3,7 +3,7 @@ module Cells
     def render_dashboard(dashboard_name, *args)
       widgets = Cells::Dashboard.dashboard_widgets(dashboard_name, *args)
       widgets.each do |widget|
-        concat render_cell(widget.cell_name, :display, *args)
+        concat cell(widget.cell_name).call(:display, *args)
       end
     end
   end
